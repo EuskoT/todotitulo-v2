@@ -412,13 +412,14 @@ import Layout from '../layouts/Layout.astro';
       <div class="co-dato"><p class="dl">Oficina</p><a href="#" data-cur>Santa Lucía 150, Piso 7, Santiago</a></div>
     </div>
     <div class="rv">
-      <form onsubmit="return false">
-        <div class="ff"><label>Nombre</label><input type="text" placeholder="Tu nombre completo"/></div>
-        <div class="ff"><label>Correo</label><input type="email" placeholder="tu@correo.cl"/></div>
-        <div class="ff"><label>Teléfono</label><input type="tel" placeholder="+56 9 0000 0000"/></div>
+      <form method="POST" action="https://formspree.io/f/mojzbgje">
+        <input type="hidden" name="_next" value="https://todotitulo.cl/gracias" />
+        <div class="ff"><label>Nombre</label><input type="text" name="nombre" placeholder="Tu nombre completo"/></div>
+        <div class="ff"><label>Correo</label><input type="email" name="email" placeholder="tu@correo.cl"/></div>
+        <div class="ff"><label>Teléfono</label><input type="tel" name="telefono" placeholder="+56 9 0000 0000"/></div>
         <div class="ff">
           <label>Tipo de caso</label>
-          <select>
+          <select name="caso">
             <option value="">Selecciona una opción</option>
             <option>Compraventa</option>
             <option>Herencia / Posesión efectiva</option>
@@ -428,7 +429,7 @@ import Layout from '../layouts/Layout.astro';
             <option>Otro</option>
           </select>
         </div>
-        <div class="ff"><label>Descripción breve</label><textarea placeholder="Cuéntanos en pocas palabras qué necesitas resolver"></textarea></div>
+        <div class="ff"><label>Descripción breve</label><textarea name="mensaje" placeholder="Cuéntanos en pocas palabras qué necesitas resolver"></textarea></div>
         <button class="fsub" data-cur>Enviar consulta</button>
       </form>
     </div>
