@@ -1,0 +1,270 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Preguntas frecuentes · TodoTítulo"
+  description="Resolvemos las dudas más comunes sobre compraventas, herencias y arriendos en Chile. Asesoría jurídica inmobiliaria y sucesoria."
+>
+
+<style>
+  .faq-header {
+    padding: 10rem 5rem 5rem;
+    position: relative; z-index: 2;
+  }
+  .faq-header h1 {
+    font-family: var(--fd);
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 200; line-height: 1.1; color: var(--p);
+    margin-bottom: 1.5rem;
+  }
+
+  .faq-section {
+    background: var(--a); color: var(--n);
+    padding: 5rem 5rem 7rem;
+    position: relative; z-index: 2;
+  }
+  .faq-list { max-width: 820px; }
+
+  .faq-item { border-bottom: 1px solid var(--adk); }
+  .faq-item.cat-header {
+    border-top: 2px solid var(--adk);
+    border-bottom: none;
+    margin-top: 1.5rem;
+  }
+  .faq-pregunta {
+    width: 100%; background: none; border: none;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 0;
+    font-family: var(--fb); font-size: .95rem; font-weight: 300;
+    color: var(--n); text-align: left;
+    cursor: pointer; transition: color .3s;
+  }
+  .faq-pregunta:hover { color: var(--o); }
+  .faq-icono {
+    font-size: 1.4rem; color: var(--o);
+    transition: transform .3s; flex-shrink: 0; margin-left: 1rem;
+  }
+  .faq-item.abierto .faq-icono { transform: rotate(45deg); }
+  .faq-respuesta {
+    max-height: 0; overflow: hidden;
+    font-size: .9rem; line-height: 1.8;
+    color: rgba(12,12,12,.65);
+    transition: max-height .4s cubic-bezier(.16,1,.3,1), padding .4s;
+  }
+  .faq-item.abierto .faq-respuesta {
+    max-height: 600px;
+    padding-bottom: 1.4rem;
+  }
+
+  .cat-label {
+    font-size: .75rem; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--o); padding: .5rem 0;
+    cursor: default; pointer-events: none;
+  }
+
+  .faq-cta {
+    text-align: center; padding: 0 0 5rem;
+    position: relative; z-index: 2;
+  }
+  .faq-cta a {
+    display: inline-block;
+    background: var(--o); color: var(--p);
+    text-decoration: none;
+    padding: .9rem 2rem;
+    font-size: .85rem; font-weight: 400;
+    letter-spacing: .08em; text-transform: uppercase;
+  }
+
+  @media (max-width: 860px) {
+    .faq-header, .faq-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .faq-cta { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+</style>
+
+<div class="faq-header">
+  <p class="section-label">Preguntas frecuentes</p>
+  <h1>Resolvemos<br>tus dudas</h1>
+</div>
+
+<section class="faq-section">
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Por qué los honorarios varían tanto entre un caso y otro?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        Cada área de práctica tiene su propia lógica de cobro. En compraventas, por ejemplo, los honorarios suelen estar asociados al valor de la propiedad. En arriendos y disputas, el alcance del trabajo determina el costo: no es lo mismo redactar un contrato que litigar un desahucio. En juicios, factores como la complejidad del caso y su duración estimada inciden directamente en el valor. Y en remates, donde a veces trabajamos a porcentaje sobre el resultado, el monto final depende de la operación misma. Por eso no entregamos cifras genéricas: evaluamos tu situación específica y te damos un presupuesto exacto antes de que decidas avanzar.
+      </div>
+    </div>
+
+    <div class="faq-item cat-header">
+      <p class="cat-label">Compraventas</p>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Es suficiente firmar un contrato privado de compraventa sin ir al notario?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        No. En Chile, la compraventa de bienes raíces es un acto solemne que exige escritura pública otorgada ante notario (art. 1801 CC). Sin esa solemnidad, el contrato es nulo y no transfiere el dominio.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Qué es una promesa de compraventa y en qué se diferencia del contrato definitivo?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        La promesa (art. 1554 CC) es un contrato preparatorio que obliga a las partes a celebrar el contrato definitivo en el futuro, bajo condiciones y plazo determinados. El contrato definitivo es el que efectivamente transfiere el dominio, requiere escritura pública e inscripción en el Conservador de Bienes Raíces.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Qué puntos importantes debe contener un contrato de compraventa?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        Un contrato bien redactado debe identificar claramente a las partes, describir el bien con su rol de avalúo y datos de inscripción en el Conservador de Bienes Raíces, establecer el precio y la forma de pago, regular la entrega material del inmueble, incluir las declaraciones de saneamiento de vicios y evicción, y definir las condiciones para la escrituración definitiva. Un contrato mal redactado es problemático por un sinfín de motivos, desde problemas económicos a problemas de registro que impidan la inscripción del bien.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Qué pasa si el vendedor tiene deudas o hipotecas sobre la propiedad?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        Las hipotecas y gravámenes siguen a la propiedad, no a la persona: si compras sin alzarlas, adquieres el inmueble con esas cargas. Por eso es indispensable revisar el Certificado de Hipotecas y Gravámenes del CBR antes de firmar, y exigir el alzamiento como condición del contrato.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Cuánto demora una compraventa desde la firma hasta la inscripción?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        En condiciones normales, entre 15 y 45 días hábiles: incluye obtención de certificados, redacción de escritura, firma ante notario y tramitación ante el Conservador de Bienes Raíces. Con financiamiento bancario el plazo puede extenderse a 60 a 90 días por los trámites del crédito hipotecario.
+      </div>
+    </div>
+
+    <div class="faq-item cat-header">
+      <p class="cat-label">Posesiones efectivas y herencias</p>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Qué necesito para hacer una posesión efectiva?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        Depende de si hay o no testamento. En general se necesita el certificado de defunción del causante, el RUT del fallecido, los documentos de identidad de todos los herederos y los antecedentes de los bienes que forman parte de la herencia. Si hay propiedades, se requieren las escrituras o certificados del Conservador de Bienes Raíces. Nosotros te guiamos desde el primer documento.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Cuánto cuesta tramitar una posesión efectiva?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        Depende del valor del patrimonio y si es intestada o testada. Las intestadas simples se tramitan ante el Registro Civil y las testadas requieren intervención judicial. Los honorarios profesionales varían según la complejidad de cada caso, que suele estar relacionada con la magnitud de la herencia.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Qué pasa si no hago la posesión efectiva?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        Los herederos no pueden disponer legalmente de los bienes del causante: no pueden vender, hipotecar ni inscribir nada a su nombre. Además, el SII puede aplicar sanciones por no declarar la herencia dentro del plazo legal de 2 años desde el fallecimiento.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Puedo vender una propiedad heredada sin haber hecho la posesión efectiva?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        No. La posesión efectiva, su inscripción en el CBR y la inscripción especial de herencia son requisitos previos e indispensables para que los herederos puedan transferir el dominio de un inmueble heredado. Sin esos pasos, cualquier compraventa es ineficaz.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Qué ocurre si uno de los herederos no quiere participar?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        No puede bloquear la posesión efectiva, que igual se tramita. Lo que sí puede hacer es negarse a vender su cuota, caso en que los demás herederos pueden demandar la partición judicial del bien, o bien el heredero renuente puede ser excluido del acuerdo pero conserva su cuota de dominio sobre el inmueble.
+      </div>
+    </div>
+
+    <div class="faq-item cat-header">
+      <p class="cat-label">Contratos de arriendo</p>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Es obligatorio firmar el contrato de arriendo ante notario?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        No es obligatorio, pero sí altamente recomendable. La Ley 18.101 no exige solemnidad notarial para los contratos de arriendo, pero firmarlos ante notario otorga fecha cierta y facilita la prueba en caso de litigio.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Cuánto tiempo tiene el arrendador para pedir el desalojo por no pago?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        No hay plazo de caducidad para ejercer la acción: el arrendador puede demandar desde el primer mes impago. El proceso judicial de terminación por no pago bajo la Ley 18.101 suele demorar entre 3 y 6 meses hasta el lanzamiento efectivo.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Cuánto tiempo de aviso debe dar el arrendador para terminar el contrato?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        Si el contrato es de plazo fijo, debe respetarse el plazo pactado. Si es indefinido, la ley exige un desahucio con 2 meses de anticipación, plazo que aumenta en 1 mes por cada año completo de vigencia del contrato, con un máximo de 6 meses.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-pregunta">
+        ¿Qué pasa si el arrendatario no paga y no hay contrato escrito?
+        <span class="faq-icono">+</span>
+      </button>
+      <div class="faq-respuesta">
+        El contrato verbal es válido y la relación arrendaticia igualmente existe. El arrendador puede demandar el término del arriendo y el cobro de rentas adeudadas, aunque deberá probar la existencia del contrato y el monto de la renta por otros medios, lo que dificulta y ralentiza el proceso.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="faq-cta">
+  <a href="/#contacto">¿Tu duda no está aquí? Escríbenos</a>
+</div>
+
+<script>
+  document.querySelectorAll('.faq-pregunta:not([style*="pointer-events"])').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.parentElement.classList.toggle('abierto');
+    });
+  });
+</script>
+
+</Layout>

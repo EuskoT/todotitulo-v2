@@ -1,0 +1,231 @@
+---
+const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", description = "Derecho Inmobiliario y Sucesorio en Chile. Evaluación del caso sin costo, atención 100% remota." } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={Astro.url.href} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet" />
+
+  <style is:global>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    ::selection { background: var(--o); color: var(--p); }
+
+    :root {
+      --n:  #0C0C0C;
+      --n2: #161616;
+      --o:  #B85C38;
+      --o2: #D4735A;
+      --p:  #F5F0E8;
+      --a:  #EAE4D8;
+      --adk:#D4CEC2;
+      --g:  #8A8A8A;
+      --fd: 'Cormorant Garamond', Georgia, serif;
+      --fb: 'DM Sans', system-ui, sans-serif;
+      --ease:  cubic-bezier(.7,0,.2,1);
+      --ease2: cubic-bezier(.16,1,.3,1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--n);
+      color: var(--p);
+      font-family: var(--fb);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      cursor: auto;
+    }
+
+    /* GRAIN */
+    .grain {
+      position: fixed; inset: 0; z-index: 1;
+      pointer-events: none; opacity: .04; mix-blend-mode: overlay;
+    }
+    .grain::before {
+      content: ''; position: absolute; inset: -200%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: grain 8s steps(10) infinite;
+    }
+    @keyframes grain {
+      0%,100% { transform: translate(0,0); }
+      10%  { transform: translate(-5%,-10%); }
+      30%  { transform: translate(3%,-15%); }
+      50%  { transform: translate(-10%,5%); }
+      70%  { transform: translate(8%,10%); }
+      90%  { transform: translate(-3%,15%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .grain::before { animation: none; }
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.6rem 5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: padding .5s var(--ease), background .5s;
+    }
+    nav::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 5rem; right: 5rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--o), transparent);
+      transform: scaleX(0);
+      transition: transform .8s var(--ease2);
+    }
+    nav.sc { padding: 1rem 5rem; background: rgba(12,12,12,.8); backdrop-filter: blur(20px); }
+    nav.sc::after { transform: scaleX(1); }
+
+    .nav-logo {
+      font-family: var(--fd); font-size: 1.4rem;
+      font-weight: 300; font-style: italic;
+      color: var(--p); text-decoration: none;
+    }
+    .nav-logo strong { font-weight: 400; font-style: normal; color: var(--o); }
+
+    .nav-links { display: flex; gap: 3rem; align-items: center; }
+    .nav-links a {
+      color: rgba(245,240,232,.5); text-decoration: none;
+      font-size: .68rem; font-weight: 400;
+      letter-spacing: .16em; text-transform: uppercase;
+      position: relative; transition: color .3s;
+    }
+    .nav-links a:not(.nav-cta)::after {
+      content: ''; position: absolute;
+      left: 0; bottom: -4px; width: 100%; height: 1px;
+      background: var(--o);
+      transform: scaleX(0); transform-origin: right;
+      transition: transform .4s var(--ease2);
+    }
+    .nav-links a:not(.nav-cta):hover { color: var(--p); }
+    .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-cta {
+      color: var(--o) !important;
+      border: 1px solid rgba(184,92,56,.4);
+      padding: .5rem 1.3rem;
+      transition: all .4s var(--ease2) !important;
+    }
+    .nav-cta:hover { background: var(--o); color: var(--p) !important; border-color: var(--o); }
+
+    @media (max-width: 860px) {
+      nav, nav.sc { padding: 1rem 1.5rem; }
+      nav::after { left: 1.5rem; right: 1.5rem; }
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--n);
+      padding: 2.2rem 5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(245,240,232,.06);
+      position: relative; z-index: 2;
+    }
+    .footer-logo {
+      font-family: var(--fd); font-size: 1.05rem;
+      font-weight: 200; font-style: italic;
+      color: rgba(245,240,232,.3);
+    }
+    .footer-logo strong { font-weight: 300; font-style: normal; color: rgba(184,92,56,.6); }
+    footer p { font-size: .68rem; color: rgba(245,240,232,.2); letter-spacing: .04em; }
+
+    @media (max-width: 860px) {
+      footer { flex-direction: column; gap: .8rem; padding: 1.5rem; text-align: center; }
+    }
+
+    /* WA FLOTANTE */
+    .wa-float {
+      position: fixed; bottom: 2.5rem; right: 2.5rem; z-index: 200;
+      width: 48px; height: 48px;
+      background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 20px rgba(0,0,0,.25);
+      text-decoration: none;
+      transition: transform .4s var(--ease2);
+    }
+    .wa-float:hover { transform: scale(1.1) rotate(8deg); }
+    .wa-float svg { width: 24px; height: 24px; fill: white; }
+
+    /* REVEAL */
+    .rv {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .9s var(--ease2), transform .9s var(--ease2);
+    }
+    .rv.vis { opacity: 1; transform: none; }
+
+    /* LABEL COMPARTIDO */
+    .section-label {
+      font-size: .64rem; font-weight: 400;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--o);
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 4rem;
+    }
+    .section-label::before { content: ''; width: 28px; height: 1px; background: var(--o); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rv { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grain"></div>
+
+  <nav id="nav">
+    <a href="/" class="nav-logo" data-cur>Todo<strong>Título</strong></a>
+    <div class="nav-links">
+      <a href="/#servicios" data-cur>Servicios</a>
+      <a href="/#proceso" data-cur>Proceso</a>
+      <a href="/guias" data-cur>Guías</a>
+      <a href="/preguntas-frecuentes" data-cur>Preguntas</a>
+      <a href="/#contacto" class="nav-cta" data-cur>Consulta gratis</a>
+    </div>
+  </nav>
+
+  <slot />
+
+  <footer>
+    <span class="footer-logo">Todo<strong>Título</strong></span>
+    <p>© 2026 TodoTítulo · Santa Lucía 150, Piso 7, Santiago</p>
+    <p>contacto@todotitulo.cl</p>
+  </footer>
+
+  <a href="https://wa.me/56983801966" class="wa-float" target="_blank" aria-label="WhatsApp" data-cur>
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.826L.057 23.75a.5.5 0 0 0 .609.61l6.053-1.456A11.93 11.93 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.807 9.807 0 0 1-5.001-1.368l-.36-.213-3.714.893.929-3.63-.235-.373A9.786 9.786 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+  </a>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 50), { passive: true });
+
+    // Reveal on scroll
+    const obs = new IntersectionObserver(es => {
+      es.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('vis'), i * 60);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: .08 });
+    document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+  </script>
+
+</body>
+</html>

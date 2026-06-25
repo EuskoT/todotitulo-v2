@@ -1,0 +1,222 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Guías y artículos · TodoTítulo"
+  description="Explicamos en lenguaje claro los procesos legales más comunes en propiedades y herencias, para que sepas a qué te enfrentas antes de dar el primer paso."
+>
+
+<style>
+  .page-header {
+    padding: 10rem 5rem 5rem;
+    position: relative; z-index: 2;
+  }
+  .page-eyebrow {
+    font-size: .64rem; font-weight: 400;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--o);
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .page-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--o); }
+  .page-header h1 {
+    font-family: var(--fd);
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 200; line-height: 1.1; color: var(--p);
+    margin-bottom: 1.5rem;
+  }
+  .page-header p {
+    font-size: .9rem; color: rgba(245,240,232,.5);
+    max-width: 560px; line-height: 1.85;
+  }
+
+  /* GRID ARTÍCULOS */
+  .articles-section {
+    background: var(--a); color: var(--n);
+    padding: 5rem 5rem 7rem;
+    position: relative; z-index: 2;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2px;
+    background: var(--adk);
+  }
+  .article-card {
+    display: block;
+    background: var(--p);
+    padding: 2.5rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .article-card:hover { background: #fff; }
+  .card-cat {
+    display: inline-block;
+    font-size: .72rem; font-weight: 400;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--o); margin-bottom: 1rem;
+  }
+  .article-card h3 {
+    font-family: var(--fd);
+    font-size: 1.45rem; font-weight: 500;
+    color: var(--n); line-height: 1.25;
+    margin-bottom: .8rem;
+  }
+  .article-card p {
+    font-size: .92rem; color: var(--g);
+    line-height: 1.6; margin-bottom: 1.2rem;
+  }
+  .card-cta {
+    font-size: .82rem; font-weight: 400;
+    letter-spacing: .05em; color: var(--o);
+    border-bottom: 1px solid var(--o);
+    padding-bottom: 2px;
+  }
+
+  /* HERRAMIENTAS */
+  .tools-section {
+    background: var(--n2);
+    padding: 6rem 5rem 7rem;
+    position: relative; z-index: 2;
+  }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: rgba(245,240,232,.06);
+    margin-top: 3rem;
+  }
+  .tool-card {
+    background: var(--n);
+    padding: 2.5rem;
+  }
+  .tool-arrow {
+    font-size: 1.2rem; color: var(--o);
+    margin-bottom: 1.2rem; display: block;
+  }
+  .tool-card h3 {
+    font-family: var(--fd);
+    font-size: 1.35rem; font-weight: 300;
+    color: var(--p); margin-bottom: .8rem;
+  }
+  .tool-card p {
+    font-size: .88rem; color: rgba(245,240,232,.45);
+    line-height: 1.75; margin-bottom: 1rem;
+  }
+  .tool-link {
+    display: inline-block;
+    font-size: .82rem; font-weight: 400;
+    letter-spacing: .05em; color: var(--o);
+    text-decoration: none;
+    border-bottom: 1px solid var(--o);
+    margin-bottom: .5rem;
+  }
+  .tool-link-sub {
+    display: block;
+    font-size: .78rem; color: var(--g);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(138,138,138,.3);
+    padding-bottom: 1px;
+  }
+
+  @media (max-width: 860px) {
+    .page-header, .articles-section, .tools-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .tools-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="page-header">
+  <p class="page-eyebrow">Guías y artículos</p>
+  <h1>Aprende sobre<br>tu situación</h1>
+  <p>Explicamos en lenguaje claro los procesos legales más comunes en propiedades y herencias, para que sepas a qué te enfrentas antes de dar el primer paso.</p>
+</div>
+
+<section class="articles-section">
+  <div class="articles-grid">
+
+    <a href="/blog/de-la-promesa-a-la-inscripcion" class="article-card">
+      <span class="card-cat">Compraventas</span>
+      <h3>De la promesa a la inscripción: qué implica realmente vender una propiedad en Chile</h3>
+      <p>Una compraventa bien hecha tiene varias etapas, cada una con su propio riesgo. Te explicamos cuáles son y por qué importan.</p>
+      <span class="card-cta">Leer artículo →</span>
+    </a>
+
+    <a href="/blog/herede-campo-hermanos-no-quieren-vender" class="article-card">
+      <span class="card-cat">Herencias</span>
+      <h3>Heredé un campo y mis hermanos no quieren vender: qué opciones existen</h3>
+      <p>Cuando los herederos no se ponen de acuerdo, la propiedad queda bloqueada. Explicamos las salidas que existen, legales y negociadas.</p>
+      <span class="card-cta">Leer artículo →</span>
+    </a>
+
+    <a href="/blog/remates-inmobiliarios-chile-como-funcionan" class="article-card">
+      <span class="card-cat">Remates e inversión</span>
+      <h3>Remates inmobiliarios en Chile: qué son, cómo funcionan y por qué la mayoría llega mal preparada</h3>
+      <p>Los remates pueden ofrecer rentabilidades de entre 20% y 40%. Pero sin preparación, también es fácil perder. Te explicamos el proceso desde adentro.</p>
+      <span class="card-cta">Leer artículo →</span>
+    </a>
+
+    <a href="/blog/precio-mercado-real-departamentos-chile" class="article-card">
+      <span class="card-cat">Mercado inmobiliario</span>
+      <h3>El precio que marca el portal y el precio que paga el mercado: por qué no son lo mismo</h3>
+      <p>En Chile existe un divorcio creciente entre el valor teórico de una propiedad y lo que el mercado está dispuesto a pagar. Entender por qué ocurre puede ser la diferencia entre una inversión y un problema.</p>
+      <span class="card-cta">Leer artículo →</span>
+    </a>
+
+    <a href="/blog/compre-sin-inscribir-en-el-cbr" class="article-card">
+      <h3>Compré sin inscribir en el CBR: ¿soy dueño?</h3>
+      <p>Firmaste ante notario y pagaste el precio, pero sin inscripción en el Conservador de Bienes Raíces la ley no te reconoce como dueño. Te explicamos por qué y cómo resolverlo.</p>
+      <span class="card-cta">Leer artículo →</span>
+    </a>
+
+    <a href="/blog/arrendatario-no-paga-que-hacer" class="article-card">
+      <h3>El arrendatario no paga: qué puedes hacer y en qué orden</h3>
+      <p>Hay pasos concretos antes de llegar al juicio, y un orden que acelera la recuperación de tu propiedad y las rentas adeudadas. Te explicamos el proceso completo.</p>
+      <span class="card-cta">Leer artículo →</span>
+    </a>
+
+    <a href="/blog/que-debe-tener-contrato-de-arriendo" class="article-card">
+      <h3>Qué debe tener un contrato de arriendo para protegerte de verdad</h3>
+      <p>Un contrato descargado de internet puede dejarte sin protección cuando más la necesitas. Estas son las cláusulas que no pueden faltar y los errores que dejan expuesto al arrendador.</p>
+      <span class="card-cta">Leer artículo →</span>
+    </a>
+
+    <a href="/blog/compre-propiedad-en-remate-que-hacer" class="article-card">
+      <h3>Compré una propiedad en remate: qué hacer ahora</h3>
+      <p>Ganar el remate es solo el primer paso. Inscripción, ocupantes, deudas y regularización son lo que define si la inversión resulta. Te explicamos qué hacer y en qué orden.</p>
+      <span class="card-cta">Leer artículo →</span>
+    </a>
+
+    <a href="/blog/herede-propiedad-con-arrendatario" class="article-card">
+      <h3>Heredé una propiedad con arrendatario: qué pasa con el contrato</h3>
+      <p>El contrato de arriendo no termina cuando muere el dueño. Te explicamos qué derechos heredas, qué obligaciones asumes y qué pasos debes dar.</p>
+      <span class="card-cta">Leer artículo →</span>
+    </a>
+
+  </div>
+</section>
+
+<section class="tools-section">
+  <p class="section-label">Herramientas</p>
+  <h2 style="font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);font-weight:200;color:var(--p);line-height:1.15;">Recursos útiles</h2>
+  <div class="tools-grid">
+
+    <div class="tool-card">
+      <span class="tool-arrow">→</span>
+      <h3>Calculadora de reajuste IPC</h3>
+      <p>Calcula el reajuste de tu contrato de arriendo según la variación oficial del IPC, usando la calculadora del Instituto Nacional de Estadísticas.</p>
+      <a href="https://calculadoraipc.ine.cl/" target="_blank" rel="noopener" class="tool-link">Ir a la calculadora oficial del INE →</a>
+      <a href="https://www.ine.gob.cl/sala-de-prensa/prensa" target="_blank" rel="noopener" class="tool-link-sub">Ver valores históricos del IPC mes a mes →</a>
+    </div>
+
+    <div class="tool-card">
+      <span class="tool-arrow">→</span>
+      <h3>Checklist para tu posesión efectiva</h3>
+      <p>Descarga la lista completa de documentos que necesitas reunir antes de iniciar el trámite de posesión efectiva.</p>
+      <a href="/#contacto" class="tool-link">Solicitar checklist gratis →</a>
+    </div>
+
+  </div>
+</section>
+
+</Layout>
