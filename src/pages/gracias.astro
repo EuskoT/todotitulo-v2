@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Gracias por tu mensaje · TodoTítulo"
+  description="Hemos recibido tu consulta. Nos pondremos en contacto contigo a la brevedad."
+>
+
+<style>
+  .gracias {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative; z-index: 2;
+  }
+  .gracias-inner { max-width: 520px; }
+  .gracias-eyebrow {
+    font-size: .64rem; font-weight: 400;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--o);
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .gracias-eyebrow::before,
+  .gracias-eyebrow::after { content: ''; width: 28px; height: 1px; background: var(--o); }
+  .gracias h1 {
+    font-family: var(--fd);
+    font-size: clamp(2.6rem, 6vw, 4.5rem);
+    font-weight: 200; line-height: 1.1;
+    color: var(--p); margin-bottom: 1.5rem;
+  }
+  .gracias p {
+    font-size: .95rem; font-weight: 300;
+    color: rgba(245,240,232,.45);
+    line-height: 1.85; margin-bottom: 3rem;
+  }
+  .gracias-link {
+    display: inline-flex; align-items: center; gap: .8rem;
+    color: var(--p); text-decoration: none;
+    font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+    padding-bottom: 4px; border-bottom: 1px solid var(--o);
+    transition: gap .3s var(--ease2);
+  }
+  .gracias-link:hover { gap: 1.4rem; }
+  .gracias-link .ar { color: var(--o); }
+</style>
+
+<div class="gracias">
+  <div class="gracias-inner">
+    <p class="gracias-eyebrow">TodoTítulo</p>
+    <h1>Gracias por<br>tu mensaje.</h1>
+    <p>Nos pondremos en contacto contigo a la brevedad.</p>
+    <a href="/" class="gracias-link">Volver al inicio <span class="ar">→</span></a>
+  </div>
+</div>
+
+</Layout>
