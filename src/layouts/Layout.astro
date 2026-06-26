@@ -117,15 +117,68 @@ const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", d
     .nav-cta {
       color: var(--o) !important;
       border: 1px solid rgba(184,92,56,.4);
-      padding: .5rem 1.3rem;
+      padding: .5rem 1rem;
       transition: all .4s var(--ease2) !important;
     }
     .nav-cta:hover { background: var(--o); color: var(--p) !important; border-color: var(--o); }
 
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--p);
+      transition: transform .35s var(--ease2), opacity .25s;
+    }
+
     @media (max-width: 860px) {
       nav, nav.sc { padding: 1rem 1.5rem; }
       nav::after { left: 1.5rem; right: 1.5rem; }
-      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(12,12,12,.97);
+        backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(184,92,56,.2);
+        padding: 1.2rem 2rem 2rem;
+        flex-direction: column;
+        gap: 0;
+        align-items: stretch;
+        opacity: 0;
+        transform: translateY(-12px);
+        transition: opacity .3s, transform .35s var(--ease2);
+        pointer-events: none;
+      }
+      nav.open .nav-links {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .nav-links a {
+        display: block;
+        padding: .85rem 0;
+        border-bottom: 1px solid rgba(245,240,232,.06);
+        font-size: .78rem;
+        color: rgba(245,240,232,.65);
+      }
+      .nav-links a.nav-cta {
+        margin-top: 1rem;
+        padding: .75rem 1rem;
+        text-align: center;
+        border-bottom: none;
+      }
+      nav.open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      nav.open .nav-hamburger span:nth-child(2) { opacity: 0; }
+      nav.open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     }
 
     /* FOOTER */
@@ -189,12 +242,15 @@ const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", d
 
   <nav id="nav">
     <a href="/" class="nav-logo" data-cur>Todo<strong>Título</strong></a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <div class="nav-links">
       <a href="/#servicios" data-cur>Servicios</a>
       <a href="/#proceso" data-cur>Proceso</a>
       <a href="/guias" data-cur>Guías</a>
       <a href="/preguntas-frecuentes" data-cur>Preguntas</a>
-      <a href="/#contacto" class="nav-cta" data-cur>Consulta gratis</a>
+      <a href="/#contacto" class="nav-cta" data-cur>Consulta y evaluación sin costo</a>
     </div>
   </nav>
 
@@ -214,6 +270,19 @@ const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", d
     // Nav scroll
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 50), { passive: true });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('nav-hamburger');
+    hamburger.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
 
     // Reveal on scroll
     const obs = new IntersectionObserver(es => {
