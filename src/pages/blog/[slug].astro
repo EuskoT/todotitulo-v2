@@ -16,6 +16,42 @@ const { Content } = await render(post);
 
 <Layout title={`${post.data.title} · TodoTítulo`} description={post.data.description}>
 
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "author": {
+    "@type": "Person",
+    "name": "José Ignacio Torrontegui",
+    "jobTitle": "Abogado",
+    "knowsAbout": [
+      "Compraventa de propiedades en Chile",
+      "Estudio de títulos y Conservador de Bienes Raíces",
+      "Posesión efectiva e impuesto a la herencia",
+      "Juicio de partición de bienes",
+      "Desahucio y juicio de arrendamiento",
+      "Ley Devuélveme mi casa",
+      "Acción de precario",
+      "Regularización de títulos de dominio",
+      "Saneamiento de propiedades rurales",
+      "Regularización de construcciones DOM",
+      "Usufructo vitalicio",
+      "Sociedades familiares",
+      "Remates judiciales",
+      "Derecho Inmobiliario Chile",
+      "Derecho Sucesorio Chile"
+    ],
+    "url": "https://todotitulo.cl"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "TodoTítulo",
+    "url": "https://todotitulo.cl"
+  },
+  "mainEntityOfPage": `https://todotitulo.cl/blog/${post.id.replace(/\.md$/, '')}`
+})} />
+
 <style>
   .article-wrap {
     max-width: 820px;
