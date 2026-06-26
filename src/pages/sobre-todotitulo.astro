@@ -4,7 +4,8 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="José Ignacio Torrontegui · Abogado Inmobiliario y Sucesorio · TodoTítulo"
-  description="Abogado especialista en derecho inmobiliario y sucesorio en Chile. Universidad de los Andes, mención Derecho de la Empresa. Más de 6 años en asesoría jurídica inmobiliaria."
+  description="Abogado especialista en derecho inmobiliario y sucesorio en Chile. Universidad de los Andes, mención Derecho de la Empresa. Asesoría remota y presencial en todo Chile."
+  noindex={false}
 >
 
 <script type="application/ld+json">{
@@ -119,12 +120,22 @@ import Layout from '../layouts/Layout.astro';
     font-size: .8rem; color: rgba(12,12,12,.5);
     letter-spacing: .03em;
   }
+  .sobre-item-desc {
+    font-size: .82rem; color: rgba(12,12,12,.6);
+    line-height: 1.6; margin-top: .3rem;
+  }
 
   .sobre-intro {
     grid-column: 1 / -1;
     font-size: .95rem; line-height: 1.85;
     color: rgba(12,12,12,.72);
     margin-bottom: 1rem;
+  }
+  .sobre-intro p {
+    margin-bottom: 1.2rem;
+  }
+  .sobre-intro p:last-child {
+    margin-bottom: 0;
   }
 
   .sobre-cta {
@@ -157,12 +168,13 @@ import Layout from '../layouts/Layout.astro';
 <section class="sobre-body">
   <div class="sobre-grid">
 
-    <p class="sobre-intro">
-      Abogado especializado en derecho inmobiliario y sucesorio, con práctica enfocada
-      en compraventas, posesiones efectivas, remates judiciales, regularización de títulos
-      y recuperación de propiedades. Atiende casos en todo Chile de forma remota y presencial
-      desde Santiago.
-    </p>
+    <div class="sobre-intro">
+      <p>TodoTítulo nació de años recorriendo propiedades a lo largo de Chile: comprando, demandando, negociando, remodelando y entendiendo por qué una propiedad vale, por qué es un problema y por qué a veces es las dos cosas al mismo tiempo.</p>
+      <p>Ese trabajo de terreno dejó algo que no se aprende en los libros: que el valor real de una propiedad no está solo en su escritura sino en su barrio, en su comunidad, en lo que ocurre a dos cuadras y en lo que está por ocurrir. Y también en lo que hay detrás de cada título deficiente, cada ocupante que no quiere salir, cada herencia que lleva años sin resolverse. En cada visita había una historia real y una familia que necesitaba orientación, no solo un abogado que firmara papeles.</p>
+      <p>Ese recorrido también significó pasar por conservadores, notarías y direcciones de obras en lugares muy distintos de Chile. En esas esperas, la conversación con las personas que iban llegando reveló algo que se repite: problemas que llevan años sin resolverse, que generan angustia real, y que en la mayoría de los casos tienen solución con la debida atención y cuidado. Lo que falta no es la ley, sino alguien que la explique y la aplique.</p>
+      <p>Ese recorrido también fue construyendo una red de contactos: corredores que conocen el mercado local, maestros y arquitectos que saben rehabilitar, tasadores que entienden el valor real de una propiedad en su contexto, y vecinos que conocen la historia de un sector mejor que cualquier informe. Una red que sigue creciendo con cada caso y cada zona nueva, y que es parte del servicio.</p>
+      <p>TodoTítulo existe para eso: asesoría con el criterio de quien conoce el negocio inmobiliario por dentro, clara, práctica y remota y presencial para llegar a cualquier lugar de Chile.</p>
+    </div>
 
     <div class="sobre-bloque">
       <h2>Formación</h2>
