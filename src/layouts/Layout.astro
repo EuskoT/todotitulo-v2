@@ -1,5 +1,5 @@
 ---
-const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", description = "Derecho Inmobiliario y Sucesorio en Chile. Evaluación del caso sin costo, atención 100% remota." } = Astro.props;
+const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", description = "Derecho Inmobiliario y Sucesorio en Chile. Evaluación del caso sin costo, atención 100% remota.", noindex = false } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -9,6 +9,7 @@ const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", d
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={Astro.url.href} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
