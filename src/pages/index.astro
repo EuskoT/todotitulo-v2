@@ -175,32 +175,9 @@ import Layout from '../layouts/Layout.astro';
 
   /* SOBRE */
   .sb {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 7rem; align-items: center;
     padding: 11rem 5rem;
     background: var(--surface-card); position: relative; z-index: 2;
-  }
-  .sb-left { position: relative; min-height: 520px; }
-  /* DS image treatment: radius-xl, hairline border, shadow-lg */
-  .sb-photo {
-    position: absolute; inset: 0;
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    border: 1px solid var(--border-hairline);
-    box-shadow: var(--shadow-lg);
-  }
-  .sb-photo img {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center top;
-    filter: saturate(0.94) contrast(1.02);
-    display: block;
-  }
-  .sb-q {
-    position: absolute; bottom: 2rem; left: 2rem; right: 2rem;
-    font-family: var(--font-serif); font-size: 1.2rem;
-    font-weight: var(--fw-light); font-style: italic;
-    color: var(--text-strong); line-height: 1.6;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+    max-width: var(--container-md); margin: 0 auto;
   }
   .sb-right h2 {
     font-family: var(--font-serif);
@@ -322,8 +299,7 @@ import Layout from '../layouts/Layout.astro';
   @media (max-width: 860px) {
     .hero { padding: 7rem 1.5rem 4rem; }
     .sec { padding: 6rem 1.5rem; }
-    .sb  { padding: 6rem 1.5rem; grid-template-columns: 1fr; gap: 3rem; }
-    .sb-left { min-height: 340px; }
+    .sb  { padding: 6rem 1.5rem; }
     .hmeta-in { flex-direction: column; gap: 2rem; }
     .pr-grid { grid-template-columns: 1fr 1fr; row-gap: 2.5rem; }
     .pq-inner, .co-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -341,8 +317,7 @@ import Layout from '../layouts/Layout.astro';
   [data-theme="dark"] .pq-left h2  { color: #f6f1e9; }
   [data-theme="dark"] .pq-item h3  { color: #f6f1e9; }
   [data-theme="dark"] .pq-item p   { color: #ece5da; }
-  [data-theme="dark"] .sb-q        { color: #f6f1e9; }
-  [data-theme="dark"] .sb-right h2 { color: #f6f1e9; }
+[data-theme="dark"] .sb-right h2 { color: #f6f1e9; }
   [data-theme="dark"] .sb-right p  { color: #ece5da; }
   [data-theme="dark"] .co-info h2  { color: #f6f1e9; }
   [data-theme="dark"] .co-info > p { color: #ece5da; }
@@ -458,12 +433,6 @@ import Layout from '../layouts/Layout.astro';
 
 <!-- QUIÉNES SOMOS -->
 <section class="sb" id="sobre">
-  <div class="sb-left rv">
-    <div class="sb-photo">
-      <img src="/foto-torrontegui.jpg" alt="José Ignacio Torrontegui, abogado de TodoTítulo" />
-    </div>
-    <p class="sb-q">"TodoTítulo nace de 8 años trabajando en una inmobiliaria especializada en remates. No es teoría."</p>
-  </div>
   <div class="sb-right rv">
     <p class="section-label">Quiénes somos</p>
     <h2>José Ignacio<br>Torrontegui</h2>
