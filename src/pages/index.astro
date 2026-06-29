@@ -70,6 +70,13 @@ import Layout from '../layouts/Layout.astro';
 
   /* SERVICIOS */
   .sv { background: var(--surface-cream); }
+  .sv-banda {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs); font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-eyebrow); text-transform: uppercase;
+    color: color-mix(in oklab, var(--text-accent) 60%, var(--text-muted));
+    line-height: 1.9; margin-bottom: 3rem;
+  }
   .sv-list { border-top: 1px solid var(--border-hairline); }
   .sv-item {
     border-bottom: 1px solid var(--border-hairline);
@@ -278,6 +285,7 @@ import Layout from '../layouts/Layout.astro';
   [data-theme="dark"] .hmeta p            { color: #ece5da !important; }
   [data-theme="dark"] .hcta               { color: #f6f1e9 !important; }
   /* SERVICIOS */
+  [data-theme="dark"] .sv-banda           { color: #c07a58 !important; }
   [data-theme="dark"] .sv-name            { color: #f6f1e9 !important; }
   [data-theme="dark"] .sv-body p          { color: #ece5da !important; }
   /* PROCESO */
@@ -320,6 +328,7 @@ import Layout from '../layouts/Layout.astro';
 <!-- SERVICIOS -->
 <section class="sec sv" id="servicios">
   <p class="section-label rv">Servicios</p>
+  <p class="sv-banda rv">Redacción de escrituras · Estudio de títulos · Asesoría en remates · Planificación patrimonial · Asesoría en arriendos · Posesión efectiva</p>
   <div class="sv-list">
     <div class="sv-item rv">
       <div class="sv-head" data-cur>
