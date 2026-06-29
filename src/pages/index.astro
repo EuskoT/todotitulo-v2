@@ -306,28 +306,35 @@ import Layout from '../layouts/Layout.astro';
     .pq-left h2 { position: static; }
   }
 
-  /* ── Dark mode: hex explícitos en secciones de fondo oscuro ── */
-  [data-theme="dark"] .hero h1     { color: #f6f1e9; }
-  [data-theme="dark"] .hmeta p     { color: #ece5da; }
-  [data-theme="dark"] .hcta        { color: #f6f1e9; }
-  [data-theme="dark"] .sv-name     { color: #f6f1e9; }
-  [data-theme="dark"] .sv-body p   { color: #ece5da; }
-  [data-theme="dark"] .pr-item h3  { color: #f6f1e9; }
-  [data-theme="dark"] .pr-item p   { color: #aaa297; }
-  [data-theme="dark"] .pq-left h2  { color: #f6f1e9; }
-  [data-theme="dark"] .pq-item h3  { color: #f6f1e9; }
-  [data-theme="dark"] .pq-item p   { color: #ece5da; }
-[data-theme="dark"] .sb-right h2 { color: #f6f1e9; }
-  [data-theme="dark"] .sb-right p  { color: #ece5da; }
-  [data-theme="dark"] .co-info h2  { color: #f6f1e9; }
-  [data-theme="dark"] .co-info > p { color: #ece5da; }
-  [data-theme="dark"] .co-dato a   { color: #ece5da; }
-  [data-theme="dark"] .cal-btn     { color: #ece5da; }
-  [data-theme="dark"] .wa-btn      { color: #ece5da; }
-  [data-theme="dark"] .ff label    { color: #aaa297; }
+  /* ── Dark mode: hex !important — ningún token puede sobrescribir ── */
+  /* HERO */
+  [data-theme="dark"] .hero h1            { color: #f6f1e9 !important; }
+  [data-theme="dark"] .hmeta p            { color: #ece5da !important; }
+  [data-theme="dark"] .hcta               { color: #f6f1e9 !important; }
+  /* SERVICIOS */
+  [data-theme="dark"] .sv-name            { color: #f6f1e9 !important; }
+  [data-theme="dark"] .sv-body p          { color: #ece5da !important; }
+  /* PROCESO */
+  [data-theme="dark"] .pr-item h3         { color: #f6f1e9 !important; }
+  [data-theme="dark"] .pr-item p          { color: #aaa297 !important; }
+  /* POR QUÉ */
+  [data-theme="dark"] .pq-left h2         { color: #f6f1e9 !important; }
+  [data-theme="dark"] .pq-item h3         { color: #f6f1e9 !important; }
+  [data-theme="dark"] .pq-item p          { color: #ece5da !important; }
+  /* SOBRE — Quiénes somos (.sb-right) */
+  [data-theme="dark"] .sb-right h2        { color: #f6f1e9 !important; }
+  [data-theme="dark"] .sb-right p         { color: #ece5da !important; }
+  [data-theme="dark"] .sb-right p strong  { color: #f6f1e9 !important; }
+  /* CONTACTO */
+  [data-theme="dark"] .co-info h2         { color: #f6f1e9 !important; }
+  [data-theme="dark"] .co-info > p        { color: #ece5da !important; }
+  [data-theme="dark"] .co-dato a          { color: #ece5da !important; }
+  [data-theme="dark"] .cal-btn            { color: #ece5da !important; }
+  [data-theme="dark"] .wa-btn             { color: #ece5da !important; }
+  [data-theme="dark"] .ff label           { color: #aaa297 !important; }
   [data-theme="dark"] .ff input,
   [data-theme="dark"] .ff select,
-  [data-theme="dark"] .ff textarea  { color: #ece5da; }
+  [data-theme="dark"] .ff textarea         { color: #ece5da !important; }
 </style>
 
 <!-- HERO -->
