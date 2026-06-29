@@ -2,7 +2,7 @@
 const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", description = "Derecho Inmobiliario y Sucesorio en Chile. Evaluación del caso sin costo, atención 100% remota.", noindex = false } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,42 +17,220 @@ const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", d
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-  <!-- Fuentes -->
+  <!-- Fuentes: Spectral · Hanken Grotesk · JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <style is:global>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    ::selection { background: var(--o); color: var(--p); }
-
+    /* ============================================================
+       DESIGN SYSTEM TOKENS — TodoTítulo "Premium" dark-first
+       ============================================================ */
     :root {
-      --n:  #0C0C0C;
-      --n2: #161616;
-      --o:  #B85C38;
-      --o2: #D4735A;
-      --p:  #F5F0E8;
-      --a:  #EAE4D8;
-      --adk:#D4CEC2;
-      --g:  #8A8A8A;
-      --fd: 'Cormorant Garamond', Georgia, serif;
-      --fb: 'DM Sans', system-ui, sans-serif;
-      --ease:  cubic-bezier(.7,0,.2,1);
-      --ease2: cubic-bezier(.16,1,.3,1);
+      /* Brand primitives */
+      --ink-900: #141416; --ink-800: #1f1f22; --ink-700: #2c2c30;
+      --ink-600: #46464c; --ink-500: #63636b; --ink-400: #8a8a91; --ink-300: #b4b1ab;
+
+      --rust-700: #8f3d1c; --rust-600: #a4451f; --rust-500: #c05834;
+      --rust-450: #d2622f; --rust-400: #df7a4a; --rust-300: #ec9b73;
+      --rust-200: #ecc6b2; --rust-100: #f5ddce; --rust-050: #fbeee5;
+
+      --oxblood-600: #5f2222; --oxblood-500: #7c2d2d;
+      --oxblood-400: #a84a48; --oxblood-100: #ecd6d2;
+
+      --pine-600: #234c3f; --pine-500: #2f6b53;
+      --pine-400: #4f9a7c; --pine-100: #d7e6df;
+
+      --gold-600: #946017; --gold-500: #b07a1e;
+      --gold-400: #d9a23f; --gold-100: #f1e2c4;
+
+      --paper-000: #ffffff; --paper-050: #faf6f0; --paper-100: #f4ece1;
+      --paper-150: #f1e5d7; --paper-200: #e8dccd; --paper-300: #d9cbb8; --paper-400: #c7b6a0;
+
+      --char-950: #0d0c0f; --char-900: #131217; --char-850: #18171c;
+      --char-800: #1d1b22; --char-750: #232128; --char-700: #2b2932; --char-600: #3a3742;
+
+      --bone-050: #f6f1e9; --bone-100: #ece5da; --bone-200: #d4ccbe;
+      --bone-300: #aaa297; --bone-400: #837c72;
+
+      /* Semantic aliases — light default */
+      --text-strong:   var(--ink-900);
+      --text-body:     var(--ink-800);
+      --text-muted:    var(--ink-500);
+      --text-subtle:   var(--ink-400);
+      --text-inverse:  var(--paper-050);
+      --text-accent:   var(--rust-600);
+      --text-on-accent:#ffffff;
+      --text-link:     var(--rust-600);
+
+      --surface-page:    var(--paper-050);
+      --surface-card:    var(--paper-000);
+      --surface-input:   var(--paper-000);
+      --surface-sunken:  var(--paper-100);
+      --surface-elevated:var(--paper-000);
+      --surface-cream:   var(--paper-150);
+      --surface-ink:     var(--ink-900);
+      --surface-accent:  var(--rust-500);
+      --surface-accent-soft: color-mix(in oklab, var(--rust-500) 12%, transparent);
+
+      --border-hairline: var(--paper-200);
+      --border-default:  var(--paper-300);
+      --border-strong:   var(--ink-900);
+      --border-accent:   var(--rust-500);
+
+      --accent:        var(--rust-500);
+      --accent-hover:  var(--rust-600);
+      --accent-press:  var(--rust-700);
+      --accent-contrast:#ffffff;
+      --focus-ring:    var(--rust-500);
+      --accent-glow:   0 6px 24px rgba(192, 88, 52, 0.22);
+
+      --success-fg: var(--pine-600); --success-bg: color-mix(in oklab, var(--pine-500) 16%, transparent);
+      --warning-fg: var(--gold-600); --warning-bg: color-mix(in oklab, var(--gold-500) 18%, transparent);
+      --danger-fg:  var(--rust-700); --danger-bg:  color-mix(in oklab, var(--rust-500) 14%, transparent);
+      --info-fg:    var(--ink-700);  --info-bg:    var(--paper-100);
+
+      /* Typography */
+      --font-serif: "Spectral", Georgia, "Times New Roman", serif;
+      --font-sans:  "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono:  "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+      --fw-light: 300; --fw-regular: 400; --fw-medium: 500;
+      --fw-semibold: 600; --fw-bold: 700; --fw-extrabold: 800;
+
+      --fs-display: 4.5rem; --fs-h1: 3.25rem; --fs-h2: 2.25rem;
+      --fs-h3: 1.625rem;  --fs-h4: 1.25rem;  --fs-lead: 1.375rem;
+      --fs-body: 1.0625rem; --fs-ui: 0.9375rem; --fs-sm: 0.8125rem; --fs-xs: 0.6875rem;
+
+      --lh-tight: 1.04; --lh-snug: 1.2; --lh-body: 1.68; --lh-ui: 1.45;
+
+      --ls-tight: -0.022em; --ls-normal: 0; --ls-eyebrow: 0.16em; --ls-wide: 0.04em;
+
+      /* Spacing */
+      --space-1: 0.25rem; --space-2: 0.5rem;  --space-3: 0.75rem;
+      --space-4: 1rem;    --space-5: 1.5rem;  --space-6: 2rem;
+      --space-7: 3rem;    --space-8: 4rem;    --space-9: 6rem; --space-10: 8rem;
+
+      --measure-prose: 68ch;
+      --container-sm: 40rem; --container-md: 56rem;
+      --container-lg: 72rem; --container-xl: 80rem;
+      --gutter: clamp(1.25rem, 5vw, 4rem);
+
+      /* Effects */
+      --radius-xs: 2px; --radius-sm: 5px; --radius-md: 8px;
+      --radius-lg: 12px; --radius-xl: 18px; --radius-pill: 999px;
+
+      --bw-hairline: 1px; --bw-regular: 1.5px; --bw-emphasis: 2px;
+
+      --shadow-xs: 0 1px 2px rgba(40, 26, 16, 0.06);
+      --shadow-sm: 0 1px 3px rgba(40, 26, 16, 0.07), 0 1px 2px rgba(40, 26, 16, 0.05);
+      --shadow-md: 0 4px 14px rgba(40, 26, 16, 0.08), 0 2px 5px rgba(40, 26, 16, 0.05);
+      --shadow-lg: 0 18px 44px rgba(40, 26, 16, 0.12), 0 5px 14px rgba(40, 26, 16, 0.07);
+      --inset-hairline: inset 0 0 0 1px var(--border-hairline);
+
+      --ease-out:    cubic-bezier(0.22, 0.61, 0.36, 1);
+      --ease-in-out: cubic-bezier(0.5, 0, 0.2, 1);
+      --ease-spring: cubic-bezier(0.34, 1.32, 0.5, 1);
+      --dur-fast: 120ms; --dur-base: 200ms; --dur-slow: 380ms;
+
+      /* Site eases */
+      --ease:  cubic-bezier(.7, 0, .2, 1);
+      --ease2: cubic-bezier(.16, 1, .3, 1);
+
+      color-scheme: light;
     }
 
+    /* Dark theme — premium charcoal, bone text, brighter rust */
+    [data-theme="dark"] {
+      --text-strong:   var(--bone-050);
+      --text-body:     var(--bone-100);
+      --text-muted:    var(--bone-300);
+      --text-subtle:   var(--bone-400);
+      --text-inverse:  var(--ink-900);
+      --text-accent:   var(--rust-400);
+      --text-on-accent:#1a0f08;
+      --text-link:     var(--rust-300);
+
+      --surface-page:    var(--char-900);
+      --surface-card:    var(--char-800);
+      --surface-input:   var(--char-850);
+      --surface-sunken:  var(--char-950);
+      --surface-elevated:var(--char-750);
+      --surface-cream:   var(--char-850);
+      --surface-ink:     var(--char-950);
+      --surface-accent:  var(--rust-450);
+      --surface-accent-soft: color-mix(in oklab, var(--rust-400) 20%, transparent);
+
+      --border-hairline: rgba(246, 241, 233, 0.09);
+      --border-default:  rgba(246, 241, 233, 0.16);
+      --border-strong:   rgba(246, 241, 233, 0.42);
+      --border-accent:   var(--rust-400);
+
+      --accent:        var(--rust-450);
+      --accent-hover:  var(--rust-400);
+      --accent-press:  var(--rust-500);
+      --accent-contrast:#1a0f08;
+      --focus-ring:    var(--rust-400);
+      --accent-glow:   0 0 0 1px rgba(223, 122, 74, 0.25), 0 8px 30px rgba(223, 122, 74, 0.30);
+
+      --success-fg: var(--pine-400); --success-bg: color-mix(in oklab, var(--pine-400) 22%, transparent);
+      --warning-fg: var(--gold-400); --warning-bg: color-mix(in oklab, var(--gold-400) 22%, transparent);
+      --danger-fg:  var(--rust-300); --danger-bg:  color-mix(in oklab, var(--rust-400) 22%, transparent);
+      --info-fg:    var(--bone-200); --info-bg:    rgba(246, 241, 233, 0.07);
+
+      --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 24px 56px rgba(0, 0, 0, 0.62), 0 8px 20px rgba(0, 0, 0, 0.45);
+
+      color-scheme: dark;
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      background: var(--n);
-      color: var(--p);
-      font-family: var(--fb);
-      font-weight: 300;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      cursor: auto;
+
+    ::selection {
+      background: color-mix(in oklab, var(--accent) 32%, transparent);
+      color: var(--text-strong);
     }
 
-    /* GRAIN */
+    body {
+      font-family: var(--font-sans);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
+      color: var(--text-body);
+      background: var(--surface-page);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      color: var(--text-strong);
+      font-weight: var(--fw-medium);
+      letter-spacing: var(--ls-tight);
+      line-height: var(--lh-snug);
+      text-wrap: balance;
+    }
+
+    a { color: var(--text-link); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+
+    /* Nota callout */
+    .nota {
+      border-left: var(--bw-emphasis) solid var(--accent);
+      background: var(--surface-accent-soft);
+      padding: var(--space-4) var(--space-5);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: var(--fs-ui); color: var(--text-body);
+    }
+
+    /* ============================================================
+       GRAIN
+       ============================================================ */
     .grain {
       position: fixed; inset: 0; z-index: 1;
       pointer-events: none; opacity: .04; mix-blend-mode: overlay;
@@ -74,7 +252,9 @@ const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", d
       .grain::before { animation: none; }
     }
 
-    /* NAV */
+    /* ============================================================
+       NAV
+       ============================================================ */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 1.6rem 5rem;
@@ -83,60 +263,65 @@ const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", d
     }
     nav::after {
       content: ''; position: absolute;
-      bottom: 0; left: 5rem; right: 5rem;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--o), transparent);
+      bottom: 0; left: 5rem; right: 5rem; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
       transform: scaleX(0);
       transition: transform .8s var(--ease2);
     }
-    nav.sc { padding: 1rem 5rem; background: rgba(12,12,12,.8); backdrop-filter: blur(20px); }
+    nav.sc {
+      padding: 1rem 5rem;
+      background: color-mix(in oklab, var(--surface-page) 82%, transparent);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-hairline);
+    }
     nav.sc::after { transform: scaleX(1); }
 
     .nav-logo {
-      font-family: var(--fd); font-size: 1.4rem;
-      font-weight: 300; font-style: italic;
-      color: var(--p); text-decoration: none;
+      font-family: var(--font-serif); font-size: 1.4rem;
+      font-weight: var(--fw-light); font-style: italic;
+      color: var(--text-strong); text-decoration: none;
     }
-    .nav-logo strong { font-weight: 400; font-style: normal; color: var(--o); }
+    .nav-logo strong { font-weight: var(--fw-regular); font-style: normal; color: var(--accent); }
 
     .nav-links { display: flex; gap: 3rem; align-items: center; }
     .nav-links a {
-      color: rgba(245,240,232,.5); text-decoration: none;
-      font-size: .68rem; font-weight: 400;
-      letter-spacing: .16em; text-transform: uppercase;
+      color: color-mix(in oklab, var(--text-body) 55%, transparent);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs); font-weight: var(--fw-medium);
+      letter-spacing: var(--ls-eyebrow); text-transform: uppercase;
       position: relative; transition: color .3s;
     }
     .nav-links a:not(.nav-cta)::after {
       content: ''; position: absolute;
       left: 0; bottom: -4px; width: 100%; height: 1px;
-      background: var(--o);
+      background: var(--accent);
       transform: scaleX(0); transform-origin: right;
       transition: transform .4s var(--ease2);
     }
-    .nav-links a:not(.nav-cta):hover { color: var(--p); }
+    .nav-links a:not(.nav-cta):hover { color: var(--text-strong); }
     .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); transform-origin: left; }
     .nav-cta {
-      color: var(--o) !important;
-      border: 1px solid rgba(184,92,56,.4);
+      color: var(--accent) !important;
+      border: 1px solid color-mix(in oklab, var(--accent) 40%, transparent);
+      border-radius: var(--radius-sm);
       padding: .5rem 1rem;
       transition: all .4s var(--ease2) !important;
     }
-    .nav-cta:hover { background: var(--o); color: var(--p) !important; border-color: var(--o); }
+    .nav-cta:hover {
+      background: var(--accent);
+      color: var(--accent-contrast) !important;
+      border-color: var(--accent);
+    }
 
     .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
     }
     .nav-hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--p);
+      display: block; width: 22px; height: 2px;
+      background: var(--text-strong);
       transition: transform .35s var(--ease2), opacity .25s;
     }
 
@@ -145,95 +330,101 @@ const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", d
       nav::after { left: 1.5rem; right: 1.5rem; }
       .nav-hamburger { display: flex; }
       .nav-links {
-        position: absolute;
-        top: 100%; left: 0; right: 0;
-        background: rgba(44,44,44,0.97);
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: color-mix(in oklab, var(--surface-card) 97%, transparent);
         backdrop-filter: blur(8px);
-        border-top: 1px solid rgba(184,92,56,.2);
+        -webkit-backdrop-filter: blur(8px);
+        border-top: 1px solid color-mix(in oklab, var(--accent) 20%, transparent);
         padding: 1.2rem 2rem 2rem;
-        flex-direction: column;
-        gap: 0;
-        align-items: stretch;
-        opacity: 0;
-        transform: translateY(-12px);
+        flex-direction: column; gap: 0; align-items: stretch;
+        opacity: 0; transform: translateY(-12px);
         transition: opacity .3s, transform .35s var(--ease2);
         pointer-events: none;
       }
-      nav.open .nav-links {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
+      nav.open .nav-links { opacity: 1; transform: translateY(0); pointer-events: auto; }
       .nav-links a {
-        display: block;
-        padding: .85rem 0;
-        border-bottom: 1px solid rgba(245,240,232,.06);
-        font-size: .78rem;
-        color: rgba(245,240,232,.65);
+        display: block; padding: .85rem 0;
+        border-bottom: 1px solid var(--border-hairline);
+        font-size: var(--fs-xs);
+        color: color-mix(in oklab, var(--text-body) 65%, transparent);
       }
       .nav-links a.nav-cta {
-        margin-top: 1rem;
-        padding: .75rem 1rem;
-        text-align: center;
-        border-bottom: none;
+        margin-top: 1rem; padding: .75rem 1rem;
+        text-align: center; border-bottom: none;
       }
       nav.open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
       nav.open .nav-hamburger span:nth-child(2) { opacity: 0; }
       nav.open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     }
 
-    /* FOOTER */
+    /* ============================================================
+       FOOTER
+       ============================================================ */
     footer {
-      background: var(--n);
+      background: var(--surface-page);
       padding: 2.2rem 5rem;
       display: flex; align-items: center; justify-content: space-between;
-      border-top: 1px solid rgba(245,240,232,.06);
+      border-top: 1px solid var(--border-hairline);
       position: relative; z-index: 2;
     }
     .footer-logo {
-      font-family: var(--fd); font-size: 1.05rem;
-      font-weight: 200; font-style: italic;
-      color: rgba(245,240,232,.3);
+      font-family: var(--font-serif); font-size: 1.05rem;
+      font-weight: var(--fw-light); font-style: italic;
+      color: color-mix(in oklab, var(--text-body) 30%, transparent);
     }
-    .footer-logo strong { font-weight: 300; font-style: normal; color: rgba(184,92,56,.6); }
-    footer p { font-size: .68rem; color: rgba(245,240,232,.2); letter-spacing: .04em; }
-
+    .footer-logo strong {
+      font-weight: var(--fw-regular); font-style: normal;
+      color: color-mix(in oklab, var(--accent) 60%, transparent);
+    }
+    footer p {
+      font-size: var(--fs-xs);
+      color: color-mix(in oklab, var(--text-body) 20%, transparent);
+      letter-spacing: var(--ls-wide);
+    }
     @media (max-width: 860px) {
       footer { flex-direction: column; gap: .8rem; padding: 1.5rem; text-align: center; }
     }
 
-    /* WA FLOTANTE */
+    /* ============================================================
+       WA FLOTANTE
+       ============================================================ */
     .wa-float {
       position: fixed; bottom: 2.5rem; right: 2.5rem; z-index: 200;
       width: 48px; height: 48px;
       background: #25D366; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2px 20px rgba(0,0,0,.25);
+      box-shadow: var(--shadow-md);
       text-decoration: none;
       transition: transform .4s var(--ease2);
     }
     .wa-float:hover { transform: scale(1.1) rotate(8deg); }
     .wa-float svg { width: 24px; height: 24px; fill: white; }
 
-    /* REVEAL */
+    /* ============================================================
+       REVEAL
+       ============================================================ */
     .rv {
       opacity: 0; transform: translateY(28px);
       transition: opacity .9s var(--ease2), transform .9s var(--ease2);
     }
     .rv.vis { opacity: 1; transform: none; }
 
-    /* LABEL COMPARTIDO */
+    /* ============================================================
+       SECTION LABEL (eyebrow)
+       ============================================================ */
     .section-label {
-      font-size: .64rem; font-weight: 400;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: var(--o);
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs); font-weight: var(--fw-medium);
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-accent);
       display: flex; align-items: center; gap: 1rem;
       margin-bottom: 4rem;
     }
-    .section-label::before { content: ''; width: 28px; height: 1px; background: var(--o); }
+    .section-label::before { content: ''; width: 18px; height: 1px; background: var(--accent); }
 
     @media (prefers-reduced-motion: reduce) {
       .rv { opacity: 1; transform: none; transition: none; }
+      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
@@ -262,7 +453,7 @@ const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", d
     <span class="footer-logo">Todo<strong>Título</strong></span>
     <p>© 2026 TodoTítulo · Santa Lucía 150, Piso 7, Santiago</p>
     <p>contacto@todotitulo.cl</p>
-    <p><a href="/privacidad" style="color:rgba(245,240,232,.2);text-decoration:none;border-bottom:1px solid rgba(245,240,232,.1);transition:color .2s;">Política de privacidad</a></p>
+    <p><a href="/privacidad" style="color:color-mix(in oklab, var(--text-body) 20%, transparent);text-decoration:none;border-bottom:1px solid var(--border-hairline);transition:color .2s;">Política de privacidad</a></p>
   </footer>
 
   <a href="https://wa.me/56983801966" class="wa-float" target="_blank" aria-label="WhatsApp" data-cur>

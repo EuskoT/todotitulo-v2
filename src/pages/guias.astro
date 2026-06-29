@@ -13,110 +13,115 @@ import Layout from '../layouts/Layout.astro';
     position: relative; z-index: 2;
   }
   .page-eyebrow {
-    font-size: .64rem; font-weight: 400;
-    letter-spacing: .2em; text-transform: uppercase;
-    color: var(--o);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs); font-weight: var(--fw-medium);
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--text-accent);
     display: flex; align-items: center; gap: 1rem;
     margin-bottom: 2rem;
   }
-  .page-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--o); }
+  .page-eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--accent); }
   .page-header h1 {
-    font-family: var(--fd);
+    font-family: var(--font-serif);
     font-size: clamp(2.4rem, 5vw, 4rem);
-    font-weight: 200; line-height: 1.1; color: var(--p);
+    font-weight: var(--fw-light); line-height: 1.1; color: var(--text-strong);
     margin-bottom: 1.5rem;
   }
   .page-header p {
-    font-size: .9rem; color: rgba(245,240,232,.5);
+    font-size: var(--fs-sm); color: var(--text-muted);
     max-width: 560px; line-height: 1.85;
   }
 
   /* GRID ARTÍCULOS */
   .articles-section {
-    background: var(--a); color: var(--n);
+    background: var(--surface-cream);
     padding: 5rem 5rem 7rem;
     position: relative; z-index: 2;
   }
   .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2px;
-    background: var(--adk);
+    gap: 1px;
+    background: var(--border-hairline);
   }
   .article-card {
     display: block;
-    background: var(--p);
+    background: var(--surface-card);
     padding: 2.5rem;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: background var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
   }
-  .article-card:hover { background: #fff; }
+  .article-card:hover { background: var(--surface-elevated); }
   .card-cat {
     display: inline-block;
-    font-size: .72rem; font-weight: 400;
-    letter-spacing: .12em; text-transform: uppercase;
-    color: var(--o); margin-bottom: 1rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs); font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-eyebrow); text-transform: uppercase;
+    color: var(--text-accent); margin-bottom: 1rem;
   }
   .article-card h3 {
-    font-family: var(--fd);
-    font-size: 1.45rem; font-weight: 500;
-    color: var(--n); line-height: 1.25;
+    font-family: var(--font-serif);
+    font-size: 1.45rem; font-weight: var(--fw-medium);
+    color: var(--text-strong); line-height: 1.25;
     margin-bottom: .8rem;
   }
   .article-card p {
-    font-size: .92rem; color: var(--g);
+    font-size: var(--fs-sm); color: var(--text-muted);
     line-height: 1.6; margin-bottom: 1.2rem;
   }
   .card-cta {
-    font-size: .82rem; font-weight: 400;
-    letter-spacing: .05em; color: var(--o);
-    border-bottom: 1px solid var(--o);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs); font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-wide); color: var(--text-accent);
+    border-bottom: 1px solid var(--accent);
     padding-bottom: 2px;
   }
 
   /* HERRAMIENTAS */
   .tools-section {
-    background: var(--n2);
+    background: var(--surface-card);
     padding: 6rem 5rem 7rem;
     position: relative; z-index: 2;
   }
   .tools-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-    background: rgba(245,240,232,.06);
+    gap: 1px;
+    background: var(--border-hairline);
     margin-top: 3rem;
   }
   .tool-card {
-    background: var(--n);
+    background: var(--surface-page);
     padding: 2.5rem;
   }
   .tool-arrow {
-    font-size: 1.2rem; color: var(--o);
+    font-size: 1.2rem; color: var(--accent);
     margin-bottom: 1.2rem; display: block;
   }
   .tool-card h3 {
-    font-family: var(--fd);
-    font-size: 1.35rem; font-weight: 300;
-    color: var(--p); margin-bottom: .8rem;
+    font-family: var(--font-serif);
+    font-size: 1.35rem; font-weight: var(--fw-light);
+    color: var(--text-strong); margin-bottom: .8rem;
   }
   .tool-card p {
-    font-size: .88rem; color: rgba(245,240,232,.45);
+    font-size: var(--fs-sm); color: var(--text-muted);
     line-height: 1.75; margin-bottom: 1rem;
   }
   .tool-link {
     display: inline-block;
-    font-size: .82rem; font-weight: 400;
-    letter-spacing: .05em; color: var(--o);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs); font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-wide); color: var(--text-accent);
     text-decoration: none;
-    border-bottom: 1px solid var(--o);
+    border-bottom: 1px solid var(--accent);
     margin-bottom: .5rem;
   }
   .tool-link-sub {
     display: block;
-    font-size: .78rem; color: var(--g);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs); color: var(--text-muted);
     text-decoration: none;
-    border-bottom: 1px solid rgba(138,138,138,.3);
+    border-bottom: 1px solid var(--border-default);
     padding-bottom: 1px;
   }
 
@@ -198,7 +203,7 @@ import Layout from '../layouts/Layout.astro';
 
 <section class="tools-section">
   <p class="section-label">Herramientas</p>
-  <h2 style="font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);font-weight:200;color:var(--p);line-height:1.15;">Recursos útiles</h2>
+  <h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--text-strong);line-height:1.15;">Recursos útiles</h2>
   <div class="tools-grid">
 
     <div class="tool-card">
