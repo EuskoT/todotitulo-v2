@@ -173,39 +173,6 @@ import Layout from '../layouts/Layout.astro';
   }
   .pq-item p { font-size: var(--fs-sm); color: var(--text-body); line-height: 1.85; }
 
-  /* SOBRE */
-  .sb {
-    padding: 11rem 5rem;
-    background: var(--surface-card); position: relative; z-index: 2;
-    max-width: var(--container-md); margin: 0 auto;
-  }
-  .sb-right h2 {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 2.8vw, 2.8rem);
-    font-weight: var(--fw-light); font-style: italic;
-    color: var(--text-strong); line-height: 1.08; margin-bottom: .4rem;
-  }
-  .sb-cargo {
-    font-family: var(--font-mono);
-    font-size: var(--fs-xs); letter-spacing: var(--ls-eyebrow); text-transform: uppercase;
-    color: var(--text-accent); margin-bottom: 2.5rem;
-  }
-  .sb-right p {
-    font-size: var(--fs-sm); line-height: 1.95;
-    color: var(--text-body); margin-bottom: 1.1rem;
-  }
-  .sb-right p strong { color: var(--text-strong); font-weight: var(--fw-regular); }
-  .sb-link {
-    display: inline-flex; align-items: center; gap: .7rem;
-    margin-top: 1.3rem; font-family: var(--font-mono);
-    font-size: var(--fs-xs);
-    letter-spacing: var(--ls-eyebrow); text-transform: uppercase;
-    color: var(--text-accent); text-decoration: none;
-    border-bottom: 1px solid var(--accent); padding-bottom: 3px;
-    transition: gap .3s var(--ease2);
-  }
-  .sb-link:hover { gap: 1.3rem; }
-
   /* CONTACTO */
   .co { background: var(--surface-cream); }
   .co-inner { display: grid; grid-template-columns: 1fr 1.1fr; gap: 7rem; align-items: start; }
@@ -299,8 +266,7 @@ import Layout from '../layouts/Layout.astro';
   @media (max-width: 860px) {
     .hero { padding: 7rem 1.5rem 4rem; }
     .sec { padding: 6rem 1.5rem; }
-    .sb  { padding: 6rem 1.5rem; }
-    .hmeta-in { flex-direction: column; gap: 2rem; }
+.hmeta-in { flex-direction: column; gap: 2rem; }
     .pr-grid { grid-template-columns: 1fr 1fr; row-gap: 2.5rem; }
     .pq-inner, .co-inner { grid-template-columns: 1fr; gap: 3rem; }
     .pq-left h2 { position: static; }
@@ -321,10 +287,6 @@ import Layout from '../layouts/Layout.astro';
   [data-theme="dark"] .pq-left h2         { color: #f6f1e9 !important; }
   [data-theme="dark"] .pq-item h3         { color: #f6f1e9 !important; }
   [data-theme="dark"] .pq-item p          { color: #ece5da !important; }
-  /* SOBRE — Quiénes somos (.sb-right) */
-  [data-theme="dark"] .sb-right h2        { color: #f6f1e9 !important; }
-  [data-theme="dark"] .sb-right p         { color: #ece5da !important; }
-  [data-theme="dark"] .sb-right p strong  { color: #f6f1e9 !important; }
   /* CONTACTO */
   [data-theme="dark"] .co-info h2         { color: #f6f1e9 !important; }
   [data-theme="dark"] .co-info > p        { color: #ece5da !important; }
@@ -435,18 +397,6 @@ import Layout from '../layouts/Layout.astro';
       <div class="pq-item rv"><span class="pq-c">03</span><div><h3>Transparencia de honorarios</h3><p>Conoces el valor exacto antes de firmar cualquier cosa, sin sorpresas al final del proceso.</p></div></div>
       <div class="pq-item rv"><span class="pq-c">04</span><div><h3>Un solo abogado, de principio a fin</h3><p>Quien evalúa tu caso es quien lo lleva hasta el final, sin que tengas que volver a explicar tu situación.</p></div></div>
     </div>
-  </div>
-</section>
-
-<!-- QUIÉNES SOMOS -->
-<section class="sb" id="sobre">
-  <div class="sb-right rv">
-    <p class="section-label">Quiénes somos</p>
-    <h2>José Ignacio<br>Torrontegui</h2>
-    <p class="sb-cargo">Abogado · TodoTítulo</p>
-    <p>Abogado de la Universidad de Los Andes, mención en Derecho de la Empresa y Diplomado en Derecho, Tecnologías y Propiedad Intelectual de la Universidad de Chile.</p>
-    <p>8 años gestionando propiedades en todo Chile: negociando con ocupantes, herederos y arrendatarios, demandándolos cuando no quedó otra, organizando el proceso legal completo y gestionando la regularización ante la DOM, hasta dejarlas listas para vender. <strong>TodoTítulo nace de esa experiencia.</strong> Con una red de corredores, tasadores, arquitectos y contactos locales que sigue creciendo con cada caso, y que permite evaluar propiedades con criterio real de terreno.</p>
-    <a href="#contacto" class="sb-link" data-cur>Cuéntanos tu caso →</a>
   </div>
 </section>
 
