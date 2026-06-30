@@ -140,9 +140,10 @@ import Layout from '../layouts/Layout.astro';
   .pr-item.vis::before { width: 100%; }
   .pr-n {
     font-family: var(--font-serif);
-    font-size: 2.4rem; font-weight: var(--fw-light);
-    color: color-mix(in oklab, var(--accent) 25%, transparent);
+    font-size: 3.5rem; font-weight: 700;
+    color: #c05834;
     line-height: 1; margin-bottom: 1.4rem;
+    opacity: 1;
   }
   .pr-item h3 {
     font-family: var(--font-serif); font-size: 1.3rem;
@@ -289,6 +290,7 @@ import Layout from '../layouts/Layout.astro';
   [data-theme="dark"] .sv-name            { color: #f6f1e9 !important; }
   [data-theme="dark"] .sv-body p          { color: #ece5da !important; }
   /* PROCESO */
+  [data-theme="dark"] .pr-n               { color: #c05834 !important; }
   [data-theme="dark"] .pr-item h3         { color: #f6f1e9 !important; }
   [data-theme="dark"] .pr-item p          { color: #aaa297 !important; }
   /* POR QUÉ */
