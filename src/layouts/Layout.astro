@@ -376,6 +376,7 @@ const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", d
       border-top: 1px solid var(--border-hairline);
       position: relative; z-index: 2;
     }
+    .footer-brand { display: flex; flex-direction: column; gap: .25rem; }
     .footer-logo {
       font-family: var(--font-serif); font-size: 1.05rem;
       font-weight: var(--fw-light); font-style: italic;
@@ -384,6 +385,11 @@ const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", d
     .footer-logo strong {
       font-weight: var(--fw-regular); font-style: normal;
       color: color-mix(in oklab, var(--accent) 60%, transparent);
+    }
+    .footer-slogan {
+      font-family: var(--font-serif); font-size: var(--fs-xs);
+      font-style: italic; font-weight: var(--fw-light);
+      color: color-mix(in oklab, var(--text-body) 25%, transparent);
     }
     footer p {
       font-size: var(--fs-xs);
@@ -459,7 +465,10 @@ const { title = "TodoTítulo · Asesoría Jurídica Inmobiliaria y Sucesoria", d
   <slot />
 
   <footer>
-    <span class="footer-logo">Todo<strong>Título</strong></span>
+    <div class="footer-brand">
+      <span class="footer-logo">Todo<strong>Título</strong></span>
+      <span class="footer-slogan">Tu título, en orden.</span>
+    </div>
     <p>© 2026 TodoTítulo · Santa Lucía 150, Piso 7, Santiago</p>
     <p>contacto@todotitulo.cl</p>
     <p><a href="/privacidad" style="color:color-mix(in oklab, var(--text-body) 20%, transparent);text-decoration:none;border-bottom:1px solid var(--border-hairline);transition:color .2s;">Política de privacidad</a></p>
